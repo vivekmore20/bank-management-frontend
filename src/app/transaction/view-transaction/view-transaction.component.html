@@ -1,0 +1,31 @@
+<h2>Transactions Details</h2>
+
+<table class="transaction-table">
+    <thead>
+        <tr>
+            <th>Transaction ID</th>
+            <th>Account No</th>
+            <th>Transaction Type</th>
+            <th>Amount</th>
+            <th>Transaction Date</th>
+            <th>Description</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let t of transaction; let i = index" [ngClass]="{
+            'odd-row': i % 2 !== 0,
+            'even-row': i % 2 === 0
+        }">
+            <td>{{t.transactionId}}</td>
+            <td>{{t.accountId}}</td>
+            <td [ngClass]="{'deposit': t.transactionType === 'Deposit',
+            'withdraw': t.transactionType === 'Withdraw'}">{{t.transactionType }}</td>
+            <td [ngClass]="{'deposit': t.transactionType === 'Deposit',
+            'withdraw': t.transactionType === 'Withdraw'}">{{t.amount | customeCurrency}}</td>
+            <td>{{t.transactionDate | date:'dd/MM/yyyy'}}</td>
+            <td>{{t.description}}</td>
+           
+        </tr>
+    </tbody>
+</table>

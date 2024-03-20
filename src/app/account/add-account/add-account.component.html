@@ -1,0 +1,46 @@
+<div class="search-container">
+    <form [formGroup]="searchForm" class="search-form" (ngSubmit)="onSubmitSearchForm()">
+    
+      <div class="form-group">
+        <label for="customerId">Customer ID</label>
+        <input type="text" class="form-control search-input" id="customerId" formControlName="customerId" placeholder="Enter Customer ID">
+        <div *ngIf="(searchForm?.get('customerId')?.invalid ?? false) && (searchForm?.get('customerId')?.dirty || searchForm?.get('customerId')?.touched)" class="error-message">
+   
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary search-btn">Search</button>
+    </form>
+  </div>
+  
+
+
+<div class="accountForm" *ngIf="isActive">
+  <form [formGroup]="accountForm" (ngSubmit)="onSubmitAcountForm()">
+   <h3>Account Form</h3>
+    <div>
+        <label for="accountType">Account Type:</label>
+        <select id="accountType" formControlName="accountType">
+          <option value="" disabled selected>Select Account Type</option>
+          <option value="Savings">Savings</option>
+          <option value="Current">Current</option>
+        </select>
+        <div *ngIf="accountForm.get('accountType')?.errors?.['required'] && accountForm.get('accountType')?.touched">
+          Account Type is required.
+        </div>
+</div>
+      
+<div>
+      <label for="balance">Balance:</label>
+      <input type="text" id="balance" formControlName="balance">
+      <div *ngIf="accountForm.get('balance')?.errors?.['required'] && accountForm.get('balance')?.touched">
+        Balance is required.
+      </div>
+      <div *ngIf="accountForm.get('balance')?.errors?.['pattern'] && accountForm.get('balance')?.touched">
+        Balance must be a valid number.
+      </div>
+    </div>
+ 
+    <button type="submit" [disabled]="accountForm.invalid">Add Account</button>
+  </form>
+  
+ </div> 

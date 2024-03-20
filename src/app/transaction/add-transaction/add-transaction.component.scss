@@ -1,0 +1,62 @@
+/* add-transaction.component.css */
+
+/* Form container */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #3498db; /* Border color */
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Form labels */
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333; /* Label color */
+  }
+  
+  /* Input and select fields */
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; /* Input border color */
+    border-radius: 5px;
+  }
+  
+  /* Dropdown arrow color */
+  select {
+    background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23333"><path d="M7 10l5 5 5-5H7z"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 10px);
+    background-position-y: 50%;
+    appearance: none;
+  }
+  
+  /* Submit button */
+  button[type="submit"] {
+    background-color: #3498db; /* Button background color */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #2980b9; /* Button hover color */
+  }
+  
+  /* Error message */
+  .error-message {
+    color: red;
+    font-size: 12px;
+  }
+  

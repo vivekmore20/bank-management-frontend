@@ -1,0 +1,88 @@
+
+
+<div class="search-container">
+    <form [formGroup]="searchForm" class="search-form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="aadharNumber">Aadhar Number</label>
+        <input type="text" class="form-control search-input" id="aadharNumber" formControlName="aadharNumber" placeholder="Enter Aadhar Number">
+        <div *ngIf="(searchForm?.get('aadharNumber')?.invalid??false)&& (searchForm?.get('aadharNumber')?.dirty || searchForm?.get('aadharNumber')?.touched)" class="error-message">
+        
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary search-btn">Search</button>
+    </form>
+  </div>
+<!-- customer-details.component.html -->
+
+<div class="container" *ngIf="customerDetails!=null">
+  <div class="profile">
+    <div class="profile-header">
+      <h2>Customer Details</h2>
+    </div>
+    <div class="profile-body">
+      <div class="profile-field">
+        <label>First Name:</label>
+        <span>{{ customerDetails.firstName | titlecase }}</span>
+      </div>
+      <div class="profile-field">
+        <label>Last Name:</label>
+        <span>{{ customerDetails.lastName | titlecase }}</span>
+      </div>
+      <div class="profile-field">
+        <label>Email:</label>
+        <span>{{ customerDetails.email }}</span>
+      </div>
+      <div class="profile-field">
+        <label>Phone Number:</label>
+        <span>{{ customerDetails.phoneNumber }}</span>
+      </div>
+      <div class="profile-field">
+        <label>Address:</label>
+        <span>{{ customerDetails.address | titlecase }}</span>
+      </div>
+      <div class="profile-field">
+        <label>Date of Birth:</label>
+        <span>{{ customerDetails.dateOfBirth }}</span>
+      </div>
+      <div class="profile-field">
+        <label>Aadhar Number:</label>
+        <span>{{ customerDetails.aadharNumber | aadharGroup }}</span>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container" *ngIf="customerDetails!=null">
+    <div class="profile">
+      <div class="profile-header">
+        <h2>Account Details</h2>
+      </div>
+  <div *ngFor="let account of accountInfo;let i = index" class="account-info">
+    <h3>Account  No {{ i+1}}</h3>
+    <div class="profile-field">
+      <label>Account No:</label>
+      <span>{{ account.accountNo }}</span>
+    </div>
+    <div class="profile-field">
+      <label>Account Type:</label>
+      <span>{{ account.accountType }}</span>
+    </div>
+    <div class="profile-field">
+      <label>Balance:</label>
+      <span>{{ account.balance }}</span>
+    </div>
+    <div class="profile-field">
+      <label>Account Created Date:</label>
+      <span>{{ account.accountOpenDate | date }}</span>
+    </div>
+    
+    <div class="profile-field">
+      <label>Status:</label>
+      <span>{{ account.status ? 'Active' : 'Inactive' }}</span>
+    </div>
+  </div>
+  </div>
+  </div>
+
+

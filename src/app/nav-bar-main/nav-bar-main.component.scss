@@ -1,0 +1,46 @@
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bank-name {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #FFFFFF; /* White color for contrast */
+}
+
+.navbar-nav li {
+    margin: 0 10px;
+}
+
+.nav-link {
+    color: #FFFFFF; /* Change button text color to white */
+    text-decoration: none; /* Remove underline */
+}
+
+.nav-link:hover {
+    color: #FF0000; /* Change button text color on hover */
+}
+
+.nav-item {
+    font-weight: bold; /* Corrected font-style to font-weight */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ffffff' class='bi bi-list' viewBox='0 0 16 16'%3e%3cpath fill-rule='evenodd' d='M.5 1.75a.75.75 0 0 1 0-1.5h15a.75.75 0 0 1 0 1.5H.5zm0 6a.75.75 0 0 1 0-1.5h15a.75.75 0 0 1 0 1.5H.5zm0 6a.75.75 0 0 1 0-1.5h15a.75.75 0 0 1 0 1.5H.5z'/%3e%3c/svg%3e");
+}
+
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.navbar-nav .active .nav-link {
+    color: red; /* Change active button text color */
+}
+
+

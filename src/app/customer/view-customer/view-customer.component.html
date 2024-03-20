@@ -1,0 +1,47 @@
+<h2>Customers Details</h2>
+
+<table class="customer-table">
+    <thead>
+        <tr>
+            <th>CustomerID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Address</th>
+            <th>Date of Birth</th>
+            <th>Aadhar Number</th>
+            <th>Account Details</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let c of customer; let i = index">
+            <tr [ngClass]="{ 'odd-row': i % 2 !== 0, 'even-row': i % 2 === 0 }">
+                <td>{{c.customerID}}</td>
+                <td>{{ c.firstName | titlecase }}</td>
+                <td>{{ c.lastName | titlecase }}</td>
+                <td>{{ c.email }}</td>
+                <td>{{ c.phoneNumber }}</td>
+                <td>{{ c.address | titlecase}}</td>
+                <td>{{ c.dateOfBirth | date:'dd/MM/yyyy' }}</td>
+                <td>{{ c.aadharNumber | aadharGroup }}</td>
+                <td>
+                    <button class="details-btn" (click)="detailsNavigate(c.customerID)">Details</button>
+      
+                </td>
+                <td>
+                    <button class="delete-btn" (click)="deleteCustomer(c.aadharNumber)">Delete</button>
+                </td>
+                <td>
+                    <button class="edit-btn" (click)="showCustomer(c.customerID)">Edit</button>
+                </td>
+               
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
+
+
+<router-outlet></router-outlet>

@@ -1,0 +1,34 @@
+<div class="search-container">
+    <form [formGroup]="searchForm" class="search-form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="accountType">Account Type</label>
+        <select class="form-control search-input" id="accountType" formControlName="accountType">
+          <option value="">Select Account Type</option>
+          <option value="Savings">Savings</option>
+          <option value="Current">Current</option>
+        </select>
+        <div *ngIf="searchForm.get('accountType')?.hasError('required') && (searchForm.get('accountType')?.dirty || searchForm.get('accountType')?.touched)"
+        class="error-message">
+          <span>Please select an account type.</span>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary search-btn">Search</button>
+    </form>
+  </div>
+  
+ <div class="container" *ngIf="showContainer">
+    <div class="profile">
+      <div class="profile-header">
+        <h2>Interest Details</h2>
+      </div>
+      <div class="profile-body">
+        <div class="profile-field">
+         
+            <label>Interest Rate for {{ searchForm.value.accountType }}</label>
+          <span><b>{{ accountDetails}}</b></span>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  

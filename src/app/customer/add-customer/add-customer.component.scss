@@ -1,0 +1,87 @@
+.container {
+  margin-top: 10px;
+  width: 100%;
+}
+
+h3 {
+  text-align: center;
+  color: #4285f4;
+  margin-top: 10px;
+  font-size: 24px;
+}
+
+/* Add border to form */
+form {
+  border: 1px solid #384697;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #cdd5e2;
+}
+
+/* Stretch form horizontally */
+form {
+  display: flex; /* Enable horizontal layout */
+  flex-wrap: wrap; /* Allow fields to wrap to new lines */
+  justify-content: space-between; /* Distribute fields evenly */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Adjust spacing between fields */
+  box-sizing: border-box;
+  width: calc(50% - 10px);
+  border:#0062cc;
+}
+
+label {
+  font-weight: bold;
+  display: block; /* Display labels on separate lines for clarity */
+  margin-bottom: 5px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+
+/* Three fields per row (optional) */
+.form-group.triple {
+  width: calc(33.33% - 10px); /* Adjust for three fields */
+}
+
+/* Move submit button outside flexbox */
+.new-line-button {
+  display: block; /* Display button on a new line */
+  margin-top: 10px; /* Add some space above the button */
+}
+
+@media (max-width: 768px) {
+  
+  .form-group {
+    width: 100%; /* Make fields full width on smaller screens */
+  }
+
+  /* Reset form layout for smaller screens (optional) */
+  form {
+    display: block; /* Disable horizontal layout for single column */
+  }
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #0062cc;
+  border-color: #0062cc;
+}
+
+.btn-primary:focus {
+  outline: none; 
+}

@@ -1,0 +1,99 @@
+/* Container styles */
+.search-container {
+    margin: 20px;
+}
+
+/* Form styles */
+.search-form {
+    max-width: 400px;
+    margin: auto;
+}
+
+/* Input field styles */
+.search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Error message styles */
+.error-message {
+    color: red;
+    font-size: 14px;
+}
+
+/* Submit button styles */
+.search-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Profile styles */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2{
+    text-align: center;
+    color: #0056b3;
+}
+.profile {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.profile-header h2 {
+    margin-top: 0;
+}
+
+.profile-field {
+    margin-bottom: 10px;
+}
+
+.profile-field label {
+    font-weight: bold;
+}
+
+.profile-field span {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+/* Transaction styles */
+.transaction-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.transaction-card {
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+    flex-basis: calc(50% - 10px);
+    box-sizing: border-box;
+}
+
+.transaction {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}

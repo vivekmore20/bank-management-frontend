@@ -1,0 +1,58 @@
+/* Your global styles */
+
+.search-container,
+.accountForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px; /* Adjust margin as needed */
+}
+
+.search-form,
+form {
+  width: 600px; /* Adjust width as needed */
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.search-input,
+form input,
+form select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+
+.search-btn,
+form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-btn:hover,
+form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Additional styling specific to the account form */
+.accountForm {
+  margin-top: 20px; /* Adjust margin as needed */
+}
+
+.accountForm form {
+  width: 600px; /* Adjust width as needed */
+}

@@ -1,0 +1,98 @@
+<h3>{{ heading }}</h3>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-6 offset-md-3">
+          <form #form="ngForm" (ngSubmit)="submitForm(form)">
+              <div class="form-group ">
+                  <label for="firstName">First Name</label>
+                  <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="formData.firstName" required minlength="2">
+                  <div *ngIf="!isEditing && form.controls['firstName'].invalid && (form.controls['firstName'].dirty || form.controls['firstName'].touched)" class="error-message">
+                      <span *ngIf="form.controls['firstName']?.errors?.['required']">First Name is required</span>
+                      <span *ngIf="form.controls['firstName']?.errors?.['minlength']">First Name must be at least 2 characters</span>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="formData.lastName" required minlength="2">
+                  <div *ngIf="!isEditing && form.controls['lastName'].invalid && (form.controls['lastName'].dirty || form.controls['lastName'].touched)" class="error-message">
+                      <span *ngIf="form.controls['lastName']?.errors?.['required']">Last Name is required</span>
+                      <span *ngIf="form.controls['lastName']?.errors?.['minlength']">Last Name must be at least 2 characters</span>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formData.email" required email>
+                  <div *ngIf="!isEditing && form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)" class="error-message">
+                      <span *ngIf="form.controls['email']?.errors?.['required']">Email is required</span>
+                      <span *ngIf="form.controls['email']?.errors?.['email']">Invalid email format</span>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="phoneNumber">Phone Number</label>
+                  <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" [(ngModel)]="formData.phoneNumber" required pattern="[0-9]{10}">
+                  <div *ngIf="!isEditing && form.controls['phoneNumber'].invalid && (form.controls['phoneNumber'].dirty || form.controls['phoneNumber'].touched)" class="error-message">
+                      <span *ngIf="form.controls['phoneNumber']?.errors?.['required']">Phone Number is required</span>
+                      <span *ngIf="form.controls['phoneNumber']?.errors?.['pattern']">Invalid phone number format</span>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" class="form-control" id="address" name="address" [(ngModel)]="formData.address" required>
+                  <div *ngIf="!isEditing && form.controls['address'].invalid && (form.controls['address'].dirty || form.controls['address'].touched)" class="error-message">
+                      <span *ngIf="form.controls['address']?.errors?.['required']">Address is required</span>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="dateOfBirth">Date of Birth</label>
+                  <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="formData.dateOfBirth" required>
+                  <div *ngIf="!isEditing &&  form.controls['dateOfBirth'].invalid && (form.controls['dateOfBirth'].dirty || form.controls['dateOfBirth'].touched)" class="error-message">
+                      <span *ngIf="form.controls['dateOfBirth']?.errors?.['required']">Date of Birth is required</span>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label for="aadharNumber">Aadhar Number</label>
+                <input type="text" class="form-control" id="aadharNumber" name="aadharNumber" [(ngModel)]="formData.aadharNumber" required pattern="[0-9]{12}" maxlength="12" [disabled]="isEditing">
+                <div *ngIf="!isEditing && form.controls['aadharNumber'].invalid && (form.controls['aadharNumber'].dirty || form.controls['aadharNumber'].touched)" class="error-message">
+                    <span *ngIf="!isEditing &&  form.controls['aadharNumber']?.errors?.['required']">Aadhar Number is required</span>
+                    <span *ngIf="form.controls['aadharNumber']?.errors?.['pattern']">Invalid Aadhar Number format</span>
+                </div>
+            </div>
+            
+              <div class="form-group">
+                  <label for="accountType">Account Type</label>
+                  <select class="form-control" id="accountType" name="accountType" [(ngModel)]="formData.accountType" required>
+                      <option value="Savings">Savings</option>
+                      <option value="Current">Current</option>
+                  </select>
+                  <div *ngIf="!isEditing && form.controls['accountType'].invalid && (form.controls['accountType'].dirty || form.controls['accountType'].touched)" class="error-message">
+                      <span *ngIf="form.controls['accountType']?.errors?.['required']">Account Type is required</span>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label for="balance">Balance</label>
+                <input type="text" class="form-control" id="balance" name="balance" [(ngModel)]="formData.balance" required min="0" maxlength="15"
+                  [disabled]="isEditing">
+                <div *ngIf="!isEditing && form.controls['balance'].invalid && (form.controls['balance'].dirty || form.controls['balance'].touched)" class="error-message">
+                  <span *ngIf="form.controls['balance']?.errors?.['required']">Balance is required</span>
+                  <span *ngIf="form.controls['balance']?.errors?.['maxlength']">Balance cannot exceed 12 digits</span>
+                </div>
+              </div>
+
+            <div class="form-group">
+             
+            </div> 
+            <div class="form-group" id="submit-but">
+                <button type="submit" class="btn btn-primary new-line-button">Submit</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<h2>Account Information</h2>
+<div *ngFor="let account of accountInfo" class="account-details">
+
+  <div class="info-row">
+    <span class="label">Account Number:</span>
+    <span class="value">{{ account.accountNo }}</span>
+  </div>
+  <div class="info-row">
+    <span class="label">Customer ID:</span>
+    <span class="value">{{ account.customerId }}</span>
+  </div>
+  <div class="info-row">
+    <span class="label">Account Type:</span>
+    <span class="value">{{ account.accountType }}</span>
+  </div>
+  <div class="info-row">
+    <span class="label">Balance:</span>
+    <span class="value">{{ account.balance | customeCurrency }}</span>
+  </div>
+  <div class="info-row">
+    <span class="label">Account Created Date :</span>
+    <span class="value">{{ account.accountOpenDate | date }}</span>
+  </div>
+  <div class="info-row">
+    <span class="label">Status:</span>
+    <span class="value" [ngClass]="{ 'active': account.status, 'inactive': !account.status }">
+      {{ account.status ? 'Active' : 'Inactive' }}
+    </span>
+  </div>
+</div>
+
+

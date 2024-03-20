@@ -1,0 +1,44 @@
+<h2>Accounts Details</h2>
+
+<table class="account-table">
+
+    <thead>
+        <tr>
+            <th>Account Number</th>
+            <th>Customer ID</th>
+            <th>Account Type</th>
+            <th>Balance</th>
+            <th>Status</th>
+            <th>Delete</th>
+            <th>Status Change</th>
+            <!-- <th>Add Transaction</th> -->
+        </tr>
+    </thead>
+
+    <tbody>
+        <ng-container *ngFor="let a of accounts; let i = index">
+            <tr [ngClass]="{ 'odd-row': i % 2 !== 0, 'even-row': i % 2 === 0 }">
+                <td>{{a.accountNo}}</td>
+                <td>{{a.customerId}}</td>
+                <td>{{a.accountType }}</td>
+                <td>{{a.balance | customeCurrency }}</td>
+                <td [ngClass]="{'active': a.status, 'inactive': !a.status}">
+                    {{ a.status | statuscolor }}
+                </td>
+                <td>
+                    <button class="delete-btn"(click)="deleteAccount(a.accountNo)">Delete</button>
+                </td>
+                <td>
+                    <button class="edit-btn" (click)="statusChange(a.accountNo)">Click</button>
+                </td>
+                <!-- <td>
+                    <button class="transaction-btn" (click)="addAccount(a.accountNo)">Transaction</button>
+                </td> -->
+
+             
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
+
+<router-outlet></router-outlet>
