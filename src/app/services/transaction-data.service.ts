@@ -17,8 +17,8 @@ export class TransactionDataService {
   }
 
 
-  addTransaction(transaction:InputTransaction):Observable<string>{
-    return this.http.post(this.url+"/AddTransaction",transaction,{responseType:'text'}) 
+  addTransaction(transaction:InputTransaction):Observable<Response<ITransaction>>{
+    return this.http.post<Response<ITransaction>>(this.url+"/AddTransaction",transaction) 
   }
  
 

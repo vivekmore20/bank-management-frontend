@@ -21,10 +21,8 @@ export class AccountDataService {
     );
   }
 
-  accountStatusChange(accountNo: number): Observable<string> {
-    return this.http.put(`${this.url}/UpdateAccountStatus/${accountNo}`, [], {
-      responseType: 'text',
-    });
+  accountStatusChange(accountNo: number): Observable<Response<IAccount>> {
+    return this.http.put<Response<IAccount>>(`${this.url}/UpdateAccountStatus/${accountNo}`, []);
   }
 
   getIntrestByAccountNo(accountNo: number): Observable<Response<IAccount>> {
@@ -36,9 +34,7 @@ export class AccountDataService {
     return this.http.get<string>(`${this.url}/GetInterestRate/${accountType}`);
   }
 
-  addAccount(account: InputAccount): Observable<string> {
-    return this.http.post(this.url + '/AddAccount', account, {
-      responseType: 'text',
-    });
+  addAccount(account: InputAccount): Observable<Response<IAccount>> {
+    return this.http.post<Response<IAccount>>(this.url + '/AddAccount', account);
   }
 }

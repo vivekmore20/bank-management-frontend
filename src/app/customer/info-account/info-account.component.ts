@@ -30,7 +30,7 @@ export class InfoAccountComponent implements OnInit {
       (response) => {
         if(response.success){
           this.accountInfo = response.data;
-          this.toastr.success("Account Details","Sucess")
+          this.toastr.success(response.message)
         }else{
           this.toastr.error(response.message)
         }

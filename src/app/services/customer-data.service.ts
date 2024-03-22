@@ -5,6 +5,7 @@ import { ICustomer } from '../interfaces/icustomer';
 import { ICustomerInput } from '../interfaces/icustomer-input';
 import { Response } from '../interfaces/response';
 import { IAccount } from '../interfaces/iaccount';
+import { ICustomerShow } from '../interfaces/icustomer-show';
 
 @Injectable({
   providedIn: 'root',
@@ -19,14 +20,14 @@ export class CustomerDataService {
     );
   }
 
-  addCustomerWithDetails(customer: ICustomerInput): Observable<string> {
-    return this.http.post(this.postUrl, customer, { responseType: 'text' });
+  addCustomerWithDetails(customer: ICustomerInput): Observable<Response<ICustomerShow>> {
+    return this.http.post<Response<ICustomerShow>>(this.postUrl, customer);
   }
 
-  deleteCustomer(aadharNumber: string): Observable<string> {
+  deleteCustomer(aadharNumber: string): Observable<Response<ICustomer>> {
     console.log(aadharNumber);
     let apiurl = `${this.url}/DeleteCustomer/${aadharNumber}`;
-    return this.http.delete(apiurl, { responseType: 'text' });
+    return this.http.delete<Response<ICustomer>>(apiurl);
   }
 
   getCustomerByAadhar(
@@ -52,12 +53,11 @@ export class CustomerDataService {
   updateCustomerwithAccount(
     customerId: number,
     body: ICustomerInput
-  ): Observable<string> {
+  ): Observable<Response<IAccount>> {
     console.log(customerId);
-    return this.http.put(
+    return this.http.put<Response<IAccount>>(
       `${this.url}/UpdateCustomer/${customerId}`,
-      body,
-      { responseType: 'text' }
+      body
     );
   }
 }

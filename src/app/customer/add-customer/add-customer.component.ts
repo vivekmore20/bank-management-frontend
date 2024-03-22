@@ -26,6 +26,12 @@ export class AddCustomerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void { 
+    this.extractCustomerID()
+  }
+
+
+  extractCustomerID()
+  {
     this.route.queryParams.subscribe((params) => {
       const customerId = params['customerId'];
       if (customerId) {
@@ -44,16 +50,21 @@ export class AddCustomerComponent implements OnInit {
   loadData(customerID: number) {
     this.customerService.getcustomerDetailsByCustomerId(customerID).subscribe(
       (customer) => {
-        this.formData = customer.data;
-        this.formData.dateOfBirth = formatDate(
-          customer.data.dateOfBirth,
-          'yyyy-MM-dd',
-          'en-US'
-        );
-  
+        if(customer.success){
+          this.formData = customer.data;
+          this.formData.dateOfBirth = formatDate(
+            customer.data.dateOfBirth,
+            'yyyy-MM-dd',
+            'en-US'
+          );
+    
+        }else{
+          this.toastr.error(customer.message)
+        }
+       
       },
       (error) => {
-        console.log(error);
+        console.log(error.statusText);
       }
     );
   }
@@ -69,10 +80,15 @@ export class AddCustomerComponent implements OnInit {
           .updateCustomerwithAccount(this.customerId, this.formData)
           .subscribe(
             (response) => {
-              console.log(response);
-              this.toastr.success('Customer Updated Successfully', 'Sucess');
+              if(response.success){
+                console.log(response);
+              this.toastr.success(response.message);
              
               this.router.navigate(['customer/view-customer']);
+              }else{
+                this.toastr.error(response.message)
+              }
+              
             },
             (error) => {
               this.toastr.error('Went wrong from updating', 'Error');
@@ -82,16 +98,16 @@ export class AddCustomerComponent implements OnInit {
       } else {
         this.customerService.addCustomerWithDetails(this.formData).subscribe(
           (response) => {
-            if(response.match('success')){
-              this.toastr.success('Customer Added Sucessfully', 'Success');
+            if(response.success){
+              this.toastr.success(response.message);
               this.router.navigate(['customer/view-customer']);
             }else{
-              this.toastr.error(response)
+              this.toastr.error(response.message)
             }
             
           },
           (error) => {
-            this.toastr.error(' Customer addition failed.', 'Error');
+            this.toastr.error(error.error);
           }
         );
       }

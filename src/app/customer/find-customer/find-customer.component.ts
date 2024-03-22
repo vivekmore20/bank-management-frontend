@@ -51,13 +51,13 @@ export class FindCustomerComponent {
       (response) => {
         if(response.success){
           this.accountInfo = response.data;
-          this.toastr.success("Account Details","Success")
+          this.toastr.success(response.message)
         }else{
           this.toastr.error(response.message)
         }    
       },
       (error) => {
-        this.toastr.error("Something went wrong")
+        this.toastr.error(error.error)
       }
     );
   }

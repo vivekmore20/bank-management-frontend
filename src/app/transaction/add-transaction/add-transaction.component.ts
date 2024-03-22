@@ -4,6 +4,7 @@ import { TransactionDataService } from '../../services/transaction-data.service'
 import { error } from 'console';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { throws } from 'assert';
 
 @Component({
   selector: 'app-add-transaction',
@@ -41,7 +42,7 @@ export class AddTransactionComponent {
     this.transactionForm = this.fb.group({
       accountId: ['', Validators.required],
       transactionType: ['', Validators.required],
-      amount: ['', [Validators.required, Validators.min(0)]],
+      amount: ['', [Validators.required, Validators.min(0),Validators.pattern(/^\d*\.?\d*$/)],],
       description: ['', Validators.required],
     });
   }
@@ -53,14 +54,17 @@ export class AddTransactionComponent {
         .addTransaction(this.transactionForm.value)
         .subscribe(
           (response) => {
-            console.log(response);
-            this.toastr.success('Transaction completed successfully.',"Success");
+            if(response.success){
+              this.toastr.success(response.message);
+            }else{
+              this.toastr.error(response.message)
+            }
+            
           },
           (error) => {
             this.toastr.error('Something went wrong',"Failure");
           }
          
-          
         );
       this.transactionForm.reset();
     } else {

@@ -29,18 +29,18 @@ export class ViewCustomerComponent {
   deleteCustomer(aadharNumber: string) {
     
     this.http.deleteCustomer(aadharNumber).subscribe(
-      (data: string) => {
-        if (data.match('success')) {
+      (data) => {
+        if (data.success) {
           this.customer = this.customer.filter(
             (x) => x.aadharNumber !== aadharNumber
           );
-          this.toastr.warning("Customer Deleted")
+          this.toastr.warning(data.message)
         } else {
-          this.toastr.error("Something went wrong")
+          this.toastr.error(data.message)
         }
       },
       (error) => {
-        console.log(error);
+        console.log(error.error);
       }
     );
     

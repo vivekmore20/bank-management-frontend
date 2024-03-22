@@ -14,15 +14,18 @@ export class ViewTransactionComponent implements OnInit {
   constructor(private transactionService: TransactionDataService,private toastr:ToastrService) {}
 
   ngOnInit(): void {
+    this.getAllTransactions()
+  }
+
+  getAllTransactions(){
     this.transactionService.getAllTransactions().subscribe(
       (response) => { 
         if(response.success){
           this.transaction = response.data;
-          this.toastr.success("All Transactions")
+          this.toastr.success(response.message)
         }else{
           this.toastr.error(response.message)
         }
-        
       },
       (error) => {
         console.log(error)

@@ -36,17 +36,18 @@ export class FindTransactionComponent {
             if (response.success) {
               this.showContainer = true;
               this.transactionDetails = response.data;
-              this.toastr.success('Account details Transaction');
+              this.toastr.success(response.message);
             }else{
               this.toastr.error(response.message)
             }
           },
           (error) => {
-            this.toastr.error('Something went wrong');
+            console.log(error)
+            this.toastr.error(error.statusText);
           }
         );
     } else {
-      console.log('Form is invalid!');
+      this.toastr.info("Please fill correct details")
     }
   }
 }

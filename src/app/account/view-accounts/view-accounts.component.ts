@@ -29,7 +29,6 @@ export class ViewAccountsComponent implements OnInit {
   getAllAccounts() {
     this.http.getAllAccounts().subscribe((data: Response<IAccount[]>) => {
       this.accounts = data.data;
-      console.log(this.accounts);
     });
   }
 
@@ -37,12 +36,15 @@ export class ViewAccountsComponent implements OnInit {
     if (confirm(`Are you sure to delete account ${accountNo}?`)) {
     this.http.deleteAccount(accountNo).subscribe(
       (response) => {
-        this.accounts = this.accounts.filter((x) => x.accountNo !== accountNo);
-        this.toastr.warning("Account Deleted","Deleted")
-      
+        if(response.success){
+          this.accounts = this.accounts.filter((x) => x.accountNo !== accountNo);
+          this.toastr.success(response.message)
+        }else{
+          this.toastr.info(response.message)
+        }
       },
       (error) => {
-        this.toastr.error("Something went wrong","Error")
+        this.toastr.error(error)
       }
     );
     }
@@ -51,14 +53,17 @@ export class ViewAccountsComponent implements OnInit {
   statusChange(accountNo: number): void {
     this.http.accountStatusChange(accountNo).subscribe(
       (response) => {
-        console.log(response);
-        const index = this.accounts.findIndex(
-          (account) => account.accountNo === accountNo
-        );
-        if (index !== -1) {
-          this.accounts[index].status = !this.accounts[index].status;
+        if(response.success){
+          const index = this.accounts.findIndex(
+            (account) => account.accountNo === accountNo
+          );
+          if (index !== -1) {
+            this.accounts[index].status = !this.accounts[index].status;
+          }
+          this.toastr.success(response.message)
+        }else{
+          this.toastr.error(response.message)
         }
-        this.toastr.success("Status changed","Sucess")
       },
       (error) => {
          this.toastr.error("Something went wrong","Error")
